@@ -38,16 +38,16 @@ app.get("/hotels/:name/:cin_date/:cout_date",(req,res)=>{
     console.log(req.params.cin_date)
     var cin_date=""
     var cout_date=""
-    if(!req.params.name) req.params.name="Mumbai"
-    if(!req.params.cin_date) cin_date = "2020-01-26"
-    if(!req.params.cout_date) cout_date ="2020-01-28"
+    //if(!req.params.name) req.params.name="Mumbai"
+    // if(!req.params.cin_date) cin_date = "2020-01-26"
+    // if(!req.params.cout_date) cout_date ="2020-01-28"
 
     cin_date = req.params.cin_date.split("-")[1]
     cout_date =  req.params.cout_date.split("-")[1]
 
     
 
-    scrape.searchHotels(cin_date,cout_date,req.query.name)
+    scrape.searchHotels(cin_date,cout_date,req.params.name)
     .then(result=>{
         res.json(result)
     }).catch(e=>{
